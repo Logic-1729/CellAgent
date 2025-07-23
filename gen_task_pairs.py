@@ -104,7 +104,7 @@ def single_app(task_trajectory_pairs):
         sim = MIN_SIM + i * gap
         for t1, t2 in possible_lshare[l_share]:
             pairs.append((t1, t2, sim))
-    pairs = balance_pairs(pairs)
+    #pairs = balance_pairs(pairs)
     return round(gap, 6), pairs
 
 def get_app_task_trajectories(domain_dir):
@@ -146,6 +146,61 @@ def get_app_task_trajectories(domain_dir):
         app_task_trajectories[app].append((task, trajectory))
 
     return app_task_trajectories
+
+def random_delete_chars(s, n):
+    import random
+    s_list = list(s)
+    if len(s_list) <= n:
+        return s  # 不删
+    idxs = random.sample(range(len(s_list)), n)
+    for idx in sorted(idxs, reverse=True):
+        del s_list[idx]
+    return ''.join(s_list)
+
+def augment_self_pairs(pairs):
+    # 统计每个sim区间的数量
+    from collections import defaultdict
+    import numpy as np
+    bins = np.arange(0.5, 1.05, 0.05)
+    sim2pairs = defaultdict(list)
+    for q1, q2, sim in pairs:
+        # 找到sim属于哪个区间
+        for i in range(len(bins)-1):
+            if bins[i] <= sim < bins[i+1]:
+                sim2pairs[i].append((q1, q2, sim))
+                break
+    avg_count = int(np.mean([len(v) for v in sim2pairs.values()]))
+    aug_pairs = []
+    for i, pairlist in sim2pairs.items():
+        if len(pairlist) < avg_count:
+            needed = avg_count - len(pairlist)
+            gen = 0
+            # 只对q1!=q2的pair做增强
+            valid_pairs = [(q1, q2, sim) for q1, q2, sim in pairlist if q1 != q2]
+            if not valid_pairs:
+                continue
+            while gen < needed:
+                for q1, q2, sim in valid_pairs:
+                    # 随机选择对q1或q2做删除
+                    if random.random() < 0.5:
+                        target, other = q1, q2
+                        is_first = True
+                    else:
+                        target, other = q2, q1
+                        is_first = False
+                    if target.startswith('Instruct:') and 'Query:' in target:
+                        prefix, query = target.split('Query:', 1)
+                        n_del = random.randint(1, min(5, len(query)))
+                        query_aug = random_delete_chars(query, n_del)
+                        target_aug = prefix + 'Query:' + query_aug
+                        if is_first:
+                            aug_pairs.append((target_aug, other, sim))
+                        else:
+                            aug_pairs.append((other, target_aug, sim))
+                        gen += 1
+                        if gen >= needed:
+                            break
+    return aug_pairs
 
 def single_domain(domain_dir):
     app_task_trajectories = get_app_task_trajectories(domain_dir)
@@ -203,9 +258,31 @@ if __name__ == '__main__':
     pairs = [(fmt.format(t1), fmt.format(t2), sim) for t1, t2, sim in pairs]
     pairs_test = [(fmt.format(t1), fmt.format(t2), sim) for t1, t2, sim in pairs_test]
     
-    df = pd.DataFrame(pairs, columns=['sentence1', 'sentence2', 'score'])
+    # 输出每个相似度分数区间对应的pair个数
+
+    def print_pair_distribution(pairs, name):
+        import numpy as np
+        bins = np.arange(0.5, 1.05, 0.05)
+        bin_labels = [f"[{bins[i]:.2f},{bins[i+1]:.2f})" for i in range(len(bins)-1)]
+        counts = [0]*(len(bins)-1)
+        for _, _, sim in pairs:
+            for i in range(len(bins)-1):
+                if bins[i] <= sim < bins[i+1]:
+                    counts[i] += 1
+                    break
+        print(f"\n{name} 区间分布:")
+        for label, count in zip(bin_labels, counts):
+            print(f"  {label}: {count}")
+
+    aug_pairs = augment_self_pairs(pairs)
+    aug_pairs_test = augment_self_pairs(pairs_test)
+
+    print_pair_distribution(pairs + aug_pairs, "训练集")
+    print_pair_distribution(pairs_test + aug_pairs_test, "测试集")
+
+    df = pd.DataFrame(pairs + aug_pairs, columns=['sentence1', 'sentence2', 'score'])
     df.to_csv('sts_mybench_data.csv', index=False, encoding='utf-8')
-    df = pd.DataFrame(pairs_test, columns=['sentence1', 'sentence2', 'score'])
+    df = pd.DataFrame(pairs_test + aug_pairs_test, columns=['sentence1', 'sentence2', 'score'])
     df.to_csv('sts_mybench_data_test.csv', index=False, encoding='utf-8')
 
     with open('app_gap.json', 'w') as f:
