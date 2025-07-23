@@ -10,7 +10,7 @@
             "click 播放热门50"
         ],
         "candidates": {
-            "artist": ["刘德华", "林俊杰", "张学友", "Taylor Swift", "Imagine Dragons"]
+            "artist": ["刘德华", "林俊杰", "张学友", "Taylor Swift", "Imagine Dragons","ryo(supercell)","Aimer","senya","sroa"]
         }
     },
     {
@@ -23,7 +23,7 @@
             "click <song>"
         ],
         "candidates": {
-            "song": ["七里香", "Counting Stars", "雨一直下"]
+            "song": ["七里香", "Counting Stars", "雨一直下","红豆","暗涌","容易受伤的女人","情难枕","小幸运","平凡之路","潇洒走一回"]
         }
     },
     {
@@ -34,7 +34,7 @@
             "click <list>"
         ],
         "candidates": {
-            "list": ["最近播放", "我喜欢的音乐", "已下载"]
+            "list": ["最近播放", "我喜欢的音乐", "已下载", "歌单", "电台", "排行榜", "本地音乐", "收藏的专辑", "收藏的MV"]
         }
     }
 ]
