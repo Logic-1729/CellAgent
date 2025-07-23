@@ -218,7 +218,12 @@ def single_domain(domain_dir):
 if __name__ == '__main__':
     app_pairs = {}
     app_gap = {}
+    base_dir = os.path.abspath('.')
     for root, _, files in os.walk('.'):
+        abs_root = os.path.abspath(root)
+        # 跳过CellAgent根目录本身（兼容WSL和Windows分隔符）
+        if abs_root.rstrip('/\\') == base_dir.rstrip('/\\'):
+            continue
         if 'templates.json' in files:
             domain_app_gap, domain_app_pairs = single_domain(root)
             app_pairs.update(domain_app_pairs)
