@@ -1,0 +1,16 @@
+[
+    {
+        "task": "用{browser}浏览器搜索{query}",
+        "trajectory": [
+            "click {browser}",
+            "click 搜索框",
+            "input {query}",
+            "click 搜索按钮"
+        ],
+        "candidates": {
+            "browser": ["Chrome", "夸克", "Edge"],
+            "query": ["新能源车", "手机评测", "小米", "华为", "大学排名", "天气预报", "奥运会", "京东", "steam", "oi-wiki"]
+        },
+        "dependency": "no"
+    }
+]

@@ -1,0 +1,89 @@
+[
+    {
+        "task": "在哔哩哔哩上搜索{topic}(相关视频|NULL)",
+        "trajectory": [
+            "click 哔哩哔哩",
+            "click 搜索框",
+            "input {topic}",
+            "click 搜索按钮"
+        ],
+        "candidates": {
+            "topic": ["人工智能", "航天探索", "高考", "机器学习", "红烧肉做法", "苹果发布会"]
+        }
+    },
+    {
+        "task": "关注哔哩哔哩(用户|UP主){user}",
+        "trajectory": [
+            "click 哔哩哔哩",
+            "click 搜索框",
+            "input {user}",
+            "click 搜索按钮",
+            "click <user>",
+            "click 关注"
+        ],
+        "candidates": {
+            "user": ["老番茄", "食贫道", "影视飓风", "绵羊料理", "科技美学"]
+        }
+    },
+    {
+        "task": "在哔哩哔哩上搜索播放{topic}相关视频",
+        "trajectory": [
+            "click 哔哩哔哩",
+            "click 搜索框",
+            "input {topic}",
+            "click 搜索按钮",
+            "click <topic>"
+        ],
+        "candidates": {
+            "topic": ["人工智能", "航天探索", "高考", "机器学习", "红烧肉做法", "苹果发布会"]
+        }
+    },
+    {
+        "task": "播放哔哩哔哩(用户|UP主){user}的最新视频",
+        "trajectory": [
+            "click 哔哩哔哩",
+            "click 搜索框",
+            "input {user}",
+            "click 搜索按钮",
+            "click <user>",
+            "click 最新视频"
+        ],
+        "candidates": {
+            "user": ["老番茄", "食贫道", "影视飓风", "绵羊料理", "科技美学"]
+        }
+    },
+    {
+        "task": "进入哔哩哔哩{zone}区",
+        "trajectory": [
+            "click 哔哩哔哩",
+            "click 菜单",
+            "click <zone>"
+        ],
+        "candidates": {
+            "zone": ["电影", "游戏", "音乐", "科技", "生活"]
+        }
+    },
+    {
+        "task": "打开哔哩哔哩{list}列表",
+        "trajectory": [
+            "click 哔哩哔哩",
+            "click 我的",
+            "click <list>"
+        ],
+        "candidates": {
+            "list": ["收藏夹", "历史记录", "稍后再看"]
+        }
+    },
+    {
+        "task": "在抖音上搜索{topic}(相关视频|NULL)",
+        "trajectory": [
+            "click 抖音",
+            "click 搜索图标",
+            "input {topic}",
+            "click 搜索按钮"
+        ],
+        "candidates": {
+            "topic": ["篮球", "广东美食", "华为开发者大会", "番茄炒蛋做法", "深度学习"]
+        }
+     }
+]

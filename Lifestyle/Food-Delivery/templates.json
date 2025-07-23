@@ -1,0 +1,81 @@
+[
+    {
+        "task": "打开{app}{restaurant}外卖菜单",
+        "trajectory": [
+            "click <app>",
+            "click 搜索框",
+            "input {restaurant}",
+            "click 搜索按钮",
+            "click <restaurant>"
+        ],
+        "candidates": {
+            "app": ["饿了么", "美团"],
+            "restaurant": ["必胜客", "海底捞", "黄焖鸡米饭", "必胜客", "奈雪的茶", "蜜雪冰城"]
+        },
+        "dependency": "no"
+    },
+    {
+        "task": "用{app}点一份{food}外卖",
+        "trajectory": [
+            "click <app>",
+            "click 搜索框",
+            "input {food}",
+            "click 搜索按钮",
+            "click <food> 商家",
+            "click <food>",
+            "click 加入购物车",
+            "click 选好了"
+        ],
+        "candidates": {
+            "app": ["饿了么", "美团"],
+            "food": ["黄焖鸡米饭", "烧鸭饭", "汉堡", "辣椒炒肉", "米粉", "薯条", "牛肉饭"]
+        },
+        "dependency": "no"
+    },
+    {
+        "task": "用{app}点一份{restaurant}的{food}外卖",
+        "trajectory": [
+            "click <app>",
+            "click 搜索框",
+            "input {restaurant}",
+            "click 搜索按钮",
+            "click <restaurant>",
+            "click 放大镜图标",
+            "input {food}",
+            "click 搜索按钮2",
+            "click <food>",
+            "click 加入购物车",
+            "click 选好了"
+        ],
+        "candidates": {
+            "app": ["饿了么", "饿了么", "饿了么", "美团", "美团", "美团"],
+            "restaurant": ["瑞幸", "麦当劳", "汉堡王", "瑞幸", "肯德基", "小杨生煎"],
+            "food": ["生椰拿铁", "板烧鸡腿堡", "皇堡套餐", "小黄油拿铁", "香辣鸡腿堡", "大虾生煎"]
+        },
+        "dependency": "one-to-one"
+    },
+    {
+        "task": "用{app}点一份{restaurant}的{food}外卖，{spec}",
+        "trajectory": [
+            "click <app>",
+            "click 搜索框",
+            "input {restaurant}",
+            "click 搜索按钮",
+            "click <restaurant>",
+            "click 放大镜图标",
+            "input {food}",
+            "click 搜索按钮2",
+            "click <food>",
+            "click <spec>",
+            "click 加入购物车",
+            "click 选好了"
+        ],
+        "candidates": {
+            "app": ["饿了么", "饿了么", "饿了么", "美团", "美团", "美团"],
+            "restaurant": ["瑞幸", "蜜雪冰城", "霸王茶姬", "瑞幸", "奈雪的茶", "一点点"],
+            "food": ["生椰拿铁", "冰鲜柠檬水", "伯牙绝弦", "小黄油拿铁", "芝士草莓", "珍珠奶茶"],
+            "spec": ["中杯", "五分糖", "去冰", "不另外加糖", "大杯", "温的"]
+        },
+        "dependency": "one-to-one"
+    }
+]

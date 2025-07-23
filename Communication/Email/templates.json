@@ -1,0 +1,98 @@
+[
+    {
+        "task": "发送一篇邮件给{email}，主题为{subject}，内容为{content}",
+        "trajectory": [
+            "click 网易邮箱",
+            "click 写邮件",
+            "input {email}",
+            "click 主题输入框",
+            "input {subject}",
+            "click 正文输入框",
+            "input {content}",
+            "click 发送"
+        ],
+        "candidates": {
+            "email": ["bob@foxmail.com", "jane@126.com", "tom@163.com"],
+            "subject": ["项目更新", "会议纪要", "活动通知"],
+            "content": ["这是最新的项目进度报告", "请查收会议纪要", "以下是活动安排"]
+        },
+        "dependency": "one-to-one"
+    },
+    {
+        "task": "打开邮箱的{list}",
+        "trajectory": [
+            "click 网易邮箱",
+            "click 菜单",
+            "click <list>"
+        ],
+        "candidates": {
+            "list": ["未读邮件列表", "草稿箱", "已删除邮件列表", "垃圾邮件列表", "收件箱"]
+        }
+    },
+    {
+        "task": "查看邮件{subject}(的内容|NULL)",
+        "trajectory": [
+            "click 网易邮箱",
+            "click <subject>"
+        ],
+        "candidates": {
+            "subject": ["会议确认", "活动安排"]
+        }
+    },
+    {
+        "task": "将所有邮件标为已读",
+        "trajectory": [
+            "click 网易邮箱",
+            "click 全标已读"
+        ],
+        "candidates": {}
+    },
+    {
+        "task": "将邮件{subject}标为星标邮件",
+        "trajectory": [
+            "click 网易邮箱",
+            "click <subject> 星标图标"
+        ],
+        "candidates": {
+            "subject": ["会议确认", "项目计划"]
+        }
+    },
+    {
+        "task": "回复邮件{subject}，内容为{content}",
+        "trajectory": [
+            "click 网易邮箱",
+            "click <subject>",
+            "click 回复",
+            "input {content}",
+            "click 发送"
+        ],
+        "candidates": {
+            "subject": ["会议确认", "活动安排", "项目计划"],
+            "content": ["好的", "收到", "请尽快推进项目"]
+        },
+        "dependency": "one-to-one"
+    },
+    {
+        "task": "搜索主题为{subject}的邮件",
+        "trajectory": [
+            "click 网易邮箱",
+            "click 放大镜图标",
+            "input {subject}",
+            "click 搜索"
+        ],
+        "candidates": {
+            "subject": ["会议", "活动"]
+        }
+    },
+    {
+        "task": "删除邮件{subject}",
+        "trajectory": [
+            "click 网易邮箱",
+            "click <subject>",
+            "click 删除"
+        ],
+        "candidates": {
+            "subject": ["会议确认", "活动安排"]
+        }
+    }
+]

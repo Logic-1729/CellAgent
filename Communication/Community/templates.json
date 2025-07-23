@@ -1,0 +1,73 @@
+[
+    {
+        "task": "在知乎上提问{question}",
+        "trajectory": [
+            "click 知乎",
+            "click 底部加号",
+            "click 提个问题",
+            "input {question}",
+            "click 发布"
+        ],
+        "candidates": {
+            "question": ["练习瑜伽有什么好处", "如何提高学习效率", "怎样做好时间管理"]
+        }
+    },
+    {
+        "task": "在知乎上搜索{query}(相关内容|NULL)",
+        "trajectory": [
+            "click 知乎",
+            "click 顶部搜索栏",
+            "input {query}",
+            "click 搜索"
+        ],
+        "candidates": {
+            "query": ["人工智能", "健康饮食", "股票投资"]
+        }
+    },
+    {
+        "task": "在知乎上回答{query}(相关问题|NULL)",
+        "trajectory": [
+            "click 知乎",
+            "click 顶部搜索栏",
+            "input {query}",
+            "click 搜索",
+            "click <query>",
+            "click 写回答",
+            "click 回答输入框",
+            "input <query>",
+            "click 发布"
+        ],
+        "candidates": {
+            "query": ["如何选择职业道路", "为什么要长跑", "雅思建议自学吗"]
+        }
+    },
+    {
+        "task": "在知乎上查看{user}的个人主页",
+        "trajectory": [
+            "click 知乎",
+            "click 顶部搜索栏",
+            "input {user}",
+            "click 搜索",
+            "click <user>"
+        ],
+        "candidates": {
+            "user": ["李开复", "刘看山", "冯骥"]
+        }
+    },
+    {
+        "task": "在知乎上关注话题{topic}",
+        "trajectory": [
+            "click 知乎",
+            "click 顶部搜索栏",
+            "input {topic}",
+            "click 搜索",
+            "scroll 结果类别菜单 left",
+            "click 话题",
+            "click <topic>",
+            "click 关注"
+        ],
+        "candidates": {
+            "topic": ["教育改革", "金融科技", "环境保护"]
+        }
+    }
+]
