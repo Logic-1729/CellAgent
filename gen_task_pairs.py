@@ -219,7 +219,7 @@ if __name__ == '__main__':
     app_pairs = {}
     app_gap = {}
     base_dir = os.path.abspath('.')
-    for root, _, files in os.walk('.'):
+    for root, dirs, files in os.walk('.'):
         abs_root = os.path.abspath(root)
         # 跳过CellAgent根目录本身（兼容WSL和Windows分隔符）
         if abs_root.rstrip('/\\') == base_dir.rstrip('/\\'):
