@@ -224,8 +224,9 @@ if __name__ == '__main__':
         # 跳过CellAgent根目录本身（兼容WSL和Windows分隔符）
         if abs_root.rstrip('/\\') == base_dir.rstrip('/\\'):
             continue
-        if 'templates.json' in files:
-            domain_app_gap, domain_app_pairs = single_domain(root)
+        template_path = os.path.join(abs_root, 'templates.json')
+        if os.path.isfile(template_path):
+            domain_app_gap, domain_app_pairs = single_domain(abs_root)
             app_pairs.update(domain_app_pairs)
             app_gap.update(domain_app_gap)
 
