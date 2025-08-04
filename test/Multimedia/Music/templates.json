@@ -10,7 +10,7 @@
             "click 播放热门50"
         ],
         "candidates": {
-            "artist": ["Crychic", "王菲", "放课后茶会", "Taylor Swift", "Imagine Dragons","ryo(supercell)","Aimer","senya","sroa"]
+            "artist": ["Crychic", "王菲", "放课后茶会", "Ayani", "Yanni","ryo(supercell)","Aimer","senya","sroa"]
         }
     },
     {
@@ -23,7 +23,7 @@
             "click <song>"
         ],
         "candidates": {
-            "song": ["蒲公英的约定", "El Pueblo Unido Jamas Sera Vincito", "come on sweet death","红豆","暗涌","容易受伤的女人","吻别","东方之珠","鹿港小镇","沧海一声笑"]
+            "song": ["蒲公英的约定", "El Pueblo Unido Jamas Sera Vincito", "come on sweet death","Never Gonna Give you up","暧昧","容易受伤的女人","吻别","东方之珠","鹿港小镇","沧海一声笑"]
         }
     },
     {
