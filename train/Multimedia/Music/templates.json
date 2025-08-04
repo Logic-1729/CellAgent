@@ -1,0 +1,40 @@
+[
+    {
+        "task": "用网易云音乐播放{artist}的热门歌曲",
+        "trajectory": [
+            "click 网易云音乐",
+            "click 搜索框",
+            "input {artist}",
+            "click 搜索按钮",
+            "click <artist>",
+            "click 播放热门50"
+        ],
+        "candidates": {
+            "artist": ["Crychic", "王菲", "放课后茶会", "Taylor Swift", "Imagine Dragons","ryo(supercell)","Aimer","senya","sroa"]
+        }
+    },
+    {
+        "task": "用网易云音乐播放{song}",
+        "trajectory": [
+            "click 网易云音乐",
+            "click 搜索框",
+            "input {song}",
+            "click 搜索按钮",
+            "click <song>"
+        ],
+        "candidates": {
+            "song": ["蒲公英的约定", "El Pueblo Unido Jamas Sera Vincito", "come on sweet death","红豆","暗涌","容易受伤的女人","吻别","东方之珠","鹿港小镇","沧海一声笑"]
+        }
+    },
+    {
+        "task": "打开网易云音乐{list}列表",
+        "trajectory": [
+            "click 网易云音乐",
+            "click 我的",
+            "click <list>"
+        ],
+        "candidates": {
+            "list": ["最近播放", "我喜欢的音乐", "已下载", "歌单", "电台", "排行榜", "本地音乐", "收藏的专辑", "收藏的MV"]
+        }
+    }
+]

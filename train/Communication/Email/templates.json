@@ -1,0 +1,98 @@
+[
+    {
+        "task": "发送一篇邮件给{email}，主题为{subject}，内容为{content}",
+        "trajectory": [
+            "click 网易邮箱",
+            "click 写邮件",
+            "input {email}",
+            "click 主题输入框",
+            "input {subject}",
+            "click 正文输入框",
+            "input {content}",
+            "click 发送"
+        ],
+        "candidates": {
+            "email": ["bob@foxmail.com", "jane@126.com", "tom@163.com", "alice@outlook.com", "charlie@gmail.com", "david@sohu.com", "eve@yahoo.com", "frank@icloud.com", "grace@live.com"],
+            "subject": ["项目更新", "会议纪要", "活动通知", "工作报告", "客户反馈", "产品发布", "市场调研", "技术支持", "财务报表", "人事通知", "培训安排", "销售数据", "战略规划", "风险评估", "质量控制", "供应链管理", "客户关系", "品牌推广", "竞争分析", "创新思路"],
+            "content": ["这是最新的项目进度报告", "请查收会议纪要", "以下是活动安排", "这是本月的工作报告", "客户反馈请查收", "产品发布会的通知", "市场调研结果已出", "技术支持请求已处理", "财务报表请查收", "人事通知请注意查看", "培训安排已更新", "销售数据分析报告", "战略规划会议纪要", "风险评估报告已完成", "质量控制流程更新", "供应链管理优化建议", "客户关系维护策略", "品牌推广计划已制定", "竞争分析报告已完成", "创新思路征集"]
+        },
+        "dependency": "one-to-one"
+    },
+    {
+        "task": "打开邮箱的{list}",
+        "trajectory": [
+            "click 网易邮箱",
+            "click 菜单",
+            "click <list>"
+        ],
+        "candidates": {
+            "list": ["未读邮件列表", "草稿箱", "已删除邮件列表", "垃圾邮件列表", "收件箱", "已发送邮件列表", "星标邮件列表", "归档邮件列表", "重要邮件列表", "标签邮件列表"]
+        }
+    },
+    {
+        "task": "查看邮件{subject}(的内容|NULL)",
+        "trajectory": [
+            "click 网易邮箱",
+            "click <subject>"
+        ],
+        "candidates": {
+            "subject": ["会议确认", "活动安排", "项目计划", "客户反馈", "产品发布", "市场调研", "技术支持", "财务报表", "人事通知", "培训安排"]
+        }
+    },
+    {
+        "task": "将所有邮件标为已读",
+        "trajectory": [
+            "click 网易邮箱",
+            "click 全标已读"
+        ],
+        "candidates": {}
+    },
+    {
+        "task": "将邮件{subject}标为星标邮件",
+        "trajectory": [
+            "click 网易邮箱",
+            "click <subject> 星标图标"
+        ],
+        "candidates": {
+            "subject": ["会议确认", "项目计划", "活动安排", "客户反馈", "产品发布", "市场调研", "技术支持", "财务报表", "人事通知", "培训安排"]
+        }
+    },
+    {
+        "task": "回复邮件{subject}，内容为{content}",
+        "trajectory": [
+            "click 网易邮箱",
+            "click <subject>",
+            "click 回复",
+            "input {content}",
+            "click 发送"
+        ],
+        "candidates": {
+            "subject": ["会议确认", "活动安排", "项目计划", "客户反馈", "产品发布", "市场调研", "技术支持", "财务报表", "人事通知", "培训安排"],
+            "content": ["好的", "收到", "请尽快推进项目", "感谢您的反馈", "期待产品发布", "市场调研结果很有价值", "技术支持已解决", "财务报表已审核", "人事通知已知晓", "培训安排已确认"]
+        },
+        "dependency": "one-to-one"
+    },
+    {
+        "task": "搜索主题为{subject}的邮件",
+        "trajectory": [
+            "click 网易邮箱",
+            "click 放大镜图标",
+            "input {subject}",
+            "click 搜索"
+        ],
+        "candidates": {
+            "subject": ["会议", "活动", "项目", "客户", "产品", "市场", "技术", "财务", "人事", "培训"]
+        }
+    },
+    {
+        "task": "删除邮件{subject}",
+        "trajectory": [
+            "click 网易邮箱",
+            "click <subject>",
+            "click 删除"
+        ],
+        "candidates": {
+            "subject": ["会议确认", "活动安排", "项目计划", "客户反馈", "产品发布", "市场调研", "技术支持", "财务报表", "人事通知", "培训安排"]
+        }
+    }
+]

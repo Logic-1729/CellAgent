@@ -1,0 +1,53 @@
+[
+    {
+        "task": "在淘宝上搜索{item}",
+        "trajectory": [
+            "click 淘宝",
+            "click 搜索框",
+            "input {item}",
+            "click 搜索按钮"
+        ],
+        "candidates": {
+            "item": ["冬季外套", "智能手表", "耳机","初音未来周边", "手机壳", "运动鞋", "化妆品", "书籍", "家居用品", "厨房用具"]
+        }
+    },
+    {
+        "task": "查看淘宝{category}订单",
+        "trajectory": [
+            "click 淘宝",
+            "click 我的淘宝",
+            "click <category>"
+        ],
+        "candidates": {
+            "category": ["待付款", "待发货", "待收货", "待评价", "已完成", "退款/售后"]
+        }
+    },
+    {
+        "task": "在淘宝上搜索进入{shop}",
+        "trajectory": [
+            "click 淘宝",
+            "click 搜索框",
+            "input {shop}",
+            "click 搜索按钮",
+            "click <shop>"
+        ],
+        "candidates": {
+            "shop": ["尤尼克斯旗舰店", "索尼旗舰店", "鱼缸专卖店", "苹果旗舰店","新华文轩旗舰","中信书店旗舰店","当当网官方旗舰店"]
+        }
+    },
+    {
+        "task": "在淘宝上搜索购买{item}",
+        "trajectory": [
+            "click 淘宝",
+            "click 搜索框",
+            "input {item}",
+            "click 搜索按钮",
+            "click <item>",
+            "click 加入购物车",
+            "click 立即购买"
+        ],
+        "candidates": {
+            "item": ["《百年孤独》", "乐事薯片", "威士忌", "消毒液", "黑曜石","充电线","白色恋人巧克力","防水双肩包","CPU钥匙扣","黑色拖鞋"]
+        }
+    }
+]
