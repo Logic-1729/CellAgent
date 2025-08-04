@@ -9,7 +9,7 @@
         ],
         "candidates": {
             "browser": ["Chrome", "夸克", "Edge"],
-            "query": ["新能源车", "手机评测", "小米", "华为", "大学排名", "天气预报", "奥运会", "京东", "steam", "oi-wiki"]
+            "query": ["玉衡杯", "PRTS", "水源社区", "草上飞", "CLASH", "MINECRAFT", "饥荒", "TERRARIA", "steam", "oi-wiki"]
         },
         "dependency": "no"
     }
